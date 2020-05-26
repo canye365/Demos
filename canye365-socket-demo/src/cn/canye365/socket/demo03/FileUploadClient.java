@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 /**
+ * 优化。。。。。
  * @author CanYe
  */
 public class FileUploadClient {

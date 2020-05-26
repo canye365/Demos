@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0dfb6be-d601-4fb6-aff6-f537f44cd94f" name="Default Changelist" comment="" />
+    <list default="true" id="c0dfb6be-d601-4fb6-aff6-f537f44cd94f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCP-Demo/META-INF/TCP-Demo.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCP-Demo/cn/canye365/tcp/demo/demo01/TCPClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCP-Demo/cn/canye365/tcp/demo/demo01/TCPServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCP-Demo/cn/canye365/tcp/demo/demo02/FileUploadClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCP-Demo/cn/canye365/tcp/demo/demo02/FileUploadServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCP-Demo/cn/canye365/tcp/demo/demo03/FileUploadClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCP-Demo/cn/canye365/tcp/demo/demo03/FileUploadServer$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCP-Demo/cn/canye365/tcp/demo/demo03/FileUploadServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/canye365/socket/demo03/FileUploadClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/canye365/socket/demo03/FileUploadClient.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +27,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="MavenImportPreferences">
@@ -26,6 +39,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1Y3sEQerAPYNiqwJUGdmKPUTIRt" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -33,9 +47,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/cn/canye365/socket/demo03/FileUploadClient.java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -159,6 +174,7 @@
       <workItem from="1582188467898" duration="2247000" />
       <workItem from="1590464483688" duration="104000" />
       <workItem from="1590464702498" duration="1797000" />
+      <workItem from="1590467699887" duration="87000" />
     </task>
     <servers />
   </component>
