@@ -1,4 +1,4 @@
-package cn.canye365.mybatisplus.pojo;
+package cn.canye365.mybatisplus.demo.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

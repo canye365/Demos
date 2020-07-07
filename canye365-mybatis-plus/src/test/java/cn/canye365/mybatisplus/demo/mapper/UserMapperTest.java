@@ -1,6 +1,7 @@
-package cn.canye365.mybatisplus.mapper;
+package cn.canye365.mybatisplus.demo.mapper;
 
-import cn.canye365.mybatisplus.pojo.User;
+import cn.canye365.mybatisplus.demo.entity.Users;
+import cn.canye365.mybatisplus.demo.pojo.User;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -12,20 +13,23 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
+/**
+ * UserMapper测试
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserMapperTest {
 
     @Autowired
-    private UserMapper userMapper;
+    private UsersMapper usersMapper;
 
     /**
      * 普通查询
      */
     @Test
     public void testSelect() {
-        List<User> users = this.userMapper.selectList(null);
-        for(User user : users){
+        List<Users> users = this.usersMapper.selectList(null);
+        for(Users user : users){
             System.out.println(user);
         }
     }
@@ -36,24 +40,24 @@ public class UserMapperTest {
      */
     @Test
     public void testSelect2() {
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<Users> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("id", 2);
-        List<User> users = this.userMapper.selectList(queryWrapper);
-        for(User user : users){
+        List<Users> users = this.usersMapper.selectList(queryWrapper);
+        for(Users user : users){
             System.out.println(user);
         }
     }
     @Test
     public void testPage(){
-        Page<User> page = new Page<>(3, 2);
-        IPage<User> userIpage = this.userMapper.selectPage(page, null);
+        Page<Users> page = new Page<>(3, 2);
+        IPage<Users> userIpage = this.usersMapper.selectPage(page, null);
         System.out.println("总条数------->  " + userIpage.getTotal());
         System.out.println("当前页数-----> " + userIpage.getCurrent());
         System.out.println("总页数-------> " + userIpage.getPages());
         System.out.println("当前每页显示的页数-----> " + userIpage.getSize());
 
-        List<User> users = userIpage.getRecords();
-        for(User user : users){
+        List<Users> users = userIpage.getRecords();
+        for(Users user : users){
             System.out.println(user);
         }
     }

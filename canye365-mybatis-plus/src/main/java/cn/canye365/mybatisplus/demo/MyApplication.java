@@ -1,8 +1,6 @@
-package cn.canye365.mybatisplus;
+package cn.canye365.mybatisplus.demo;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
-import javafx.application.Application;
-import javafx.stage.Stage;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
