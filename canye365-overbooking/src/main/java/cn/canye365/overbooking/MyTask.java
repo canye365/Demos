@@ -4,7 +4,6 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Transaction;
 
 import javax.xml.crypto.Data;
-import java.time.DateTimeException;
 import java.util.Date;
 
 /**
@@ -14,6 +13,7 @@ public class MyTask implements Runnable {
 
     @Override
     public void run() {
+        System.out.println(Thread.currentThread().getName());
         Jedis jedis = new Jedis("localhost", 6379);
         //jedis.auth("canye");
         jedis.select(1);
@@ -22,13 +22,9 @@ public class MyTask implements Runnable {
         if(num > 0){
             Transaction transaction = jedis.multi();
             transaction.decr("num");
-            transaction.rpush("show_list", num + "is show...");
+            transaction.rpush("show_list", num + " is show...");
             transaction.exec();
-        }else{
-            Application.threadPoolExecutor.shutdown();
         }
-
-
         jedis.close();
     }
 }
