@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application.name: canye365-codeGenerator
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.43.120:3306/test?characterEncoding=UTF8&autoReconnetion=true&useSSL=false
+    username: root
+    password: root
+
+# 扫描 mapper
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml

@@ -1,0 +1,9 @@
+cn\canye365\generator\utils\Field.class
+cn\canye365\generator\vue\VueGenerator.class
+cn\canye365\generator\utils\DbUtil.class
+cn\canye365\generator\CodeGenerator.class
+cn\canye365\generator\enums\EnumGenerator.class
+cn\canye365\generator\test\TestUtil.class
+cn\canye365\generator\server\ServerGenerator.class
+cn\canye365\generator\utils\FreemarkerUtil.class
+cn\canye365\generator\test\Test.class
