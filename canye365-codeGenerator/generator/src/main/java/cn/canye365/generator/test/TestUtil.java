@@ -12,8 +12,8 @@ import java.io.IOException;
 
 public class TestUtil {
 
-    static String ftlPath = "generator/src/main/java/cn/canye365/onlinevideo/generator/test/";
-    static String toPath = "generator/src/main/java/cn/canye365/onlinevideo/generator/test/";
+    static String ftlPath = "generator/src/main/java/cn/canye365/generator/test/";
+    static String toPath = "generator/src/main/java/cn/canye365/generator/test/";
 
     public static void main(String[] args) throws IOException, TemplateException {
         // 读取模板

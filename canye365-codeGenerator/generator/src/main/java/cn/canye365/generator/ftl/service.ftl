@@ -2,7 +2,7 @@ package cn.canye365.code.demo.service;
 
 import cn.canye365.code.demo.domain.${Domain};
 import cn.canye365.code.demo.dto.${Domain}Dto;
-import cn.canye365.code.demo.dto.PageDto;
+import cn.canye365.code.PageDto;
 
 import java.util.List;
 

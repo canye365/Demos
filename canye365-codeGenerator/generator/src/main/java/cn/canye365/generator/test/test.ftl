@@ -1,4 +1,4 @@
-package cn.canye365.onlinevideo.generator.test;
+package cn.canye365.generator.test;
 
 public class Test {
     /**
