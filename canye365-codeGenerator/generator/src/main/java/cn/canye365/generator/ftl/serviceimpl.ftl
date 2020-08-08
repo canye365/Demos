@@ -1,13 +1,13 @@
-package cn.canye365.code.demo.service.impl;
+package cn.canye365.demo.service.impl;
 
-import cn.canye365.code.demo.domain.${Domain};
-import cn.canye365.code.demo.dto.${Domain}Dto;
-import cn.canye365.code.demo.domain.${Domain}Example;
-import cn.canye365.code.PageDto;
-import cn.canye365.code.demo.mapper.${Domain}Mapper;
-import cn.canye365.code.demo.service.${Domain}Service;
-import cn.canye365.code.CopyUtil;
-import cn.canye365.code.UuidUtil;
+import cn.canye365.demo.domain.${Domain};
+import cn.canye365.demo.dto.${Domain}Dto;
+import cn.canye365.demo.domain.${Domain}Example;
+import cn.canye365.demo.dto.PageDto;
+import cn.canye365.demo.mapper.${Domain}Mapper;
+import cn.canye365.demo.service.${Domain}Service;
+import cn.canye365.demo.utils.CopyUtil;
+import cn.canye365.demo.utils.UuidUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;

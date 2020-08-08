@@ -1,12 +1,13 @@
 package cn.canye365.demo.service.impl;
 
 import cn.canye365.demo.domain.User;
+import cn.canye365.demo.dto.UserDto;
 import cn.canye365.demo.domain.UserExample;
 import cn.canye365.demo.dto.PageDto;
-import cn.canye365.demo.dto.UserDto;
 import cn.canye365.demo.mapper.UserMapper;
 import cn.canye365.demo.service.UserService;
 import cn.canye365.demo.utils.CopyUtil;
+import cn.canye365.demo.utils.UuidUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
@@ -15,9 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
+import java.util.Date;
 /**
  *
  * @author CanYe

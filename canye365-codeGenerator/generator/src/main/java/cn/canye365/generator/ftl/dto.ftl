@@ -1,4 +1,4 @@
-package cn.canye365.code.demo.dto;
+package cn.canye365.demo.dto;
 /**
  *
  * @author CanYe

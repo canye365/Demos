@@ -1,8 +1,8 @@
-package cn.canye365.code.demo.service;
+package cn.canye365.demo.service;
 
-import cn.canye365.code.demo.domain.${Domain};
-import cn.canye365.code.demo.dto.${Domain}Dto;
-import cn.canye365.code.PageDto;
+import cn.canye365.demo.domain.${Domain};
+import cn.canye365.demo.dto.${Domain}Dto;
+import cn.canye365.demo.dto.PageDto;
 
 import java.util.List;
 

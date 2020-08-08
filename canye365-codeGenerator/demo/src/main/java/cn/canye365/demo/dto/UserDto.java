@@ -3,10 +3,8 @@ package cn.canye365.demo.dto;
  *
  * @author CanYe
  */
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class UserDto {
 
@@ -29,6 +27,11 @@ public class UserDto {
      * 年龄
      */
     private Integer age;
+
+    /**
+     * 性别 f 女/m 男
+     */
+    private String sex;
 
     /**
      * 邮箱
@@ -73,6 +76,14 @@ public class UserDto {
         this.age = age;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -100,6 +111,7 @@ public class UserDto {
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
         sb.append(", age=").append(age);
+        sb.append(", sex=").append(sex);
         sb.append(", email=").append(email);
         sb.append(", birthday=").append(birthday);
         sb.append("]");

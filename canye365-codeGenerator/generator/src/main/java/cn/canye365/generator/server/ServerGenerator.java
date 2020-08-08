@@ -17,14 +17,14 @@ import java.util.*;
 public class ServerGenerator {
 
     //读generatorConfig.xml
-    static String generatorConfigPath = "src/main/resources/generator/generatorConfig.xml";
+    static String generatorConfigPath = "demo/src/main/resources/generator/generatorConfig.xml";
 
 
     static String MODULE = "user";
-    static String toServicePath = "src/main/java/cn/canye365/code/demo/service/";
-    static String toServiceImplPath = "src/main/java/cn/canye365/code/demo/service/impl/";
-    static String toControllerPath = "src/main/java/cn/canye365/code/demo/controller/";
-    static String toDtoPath = "src/main/java/cn/canye365/code/demo/dto/";
+    static String toServicePath = "demo/src/main/java/cn/canye365/demo/service/";
+    static String toServiceImplPath = "demo/src/main/java/cn/canye365/demo/service/impl/";
+    static String toControllerPath = "demo/src/main/java/cn/canye365/demo/controller/";
+    static String toDtoPath = "demo/src/main/java/cn/canye365/demo/dto/";
 
     public static void main(String[] args) throws Exception {
 

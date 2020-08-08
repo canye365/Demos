@@ -1,12 +1,12 @@
-package cn.canye365.code.demo.controller;
+package cn.canye365.demo.controller;
 
-import cn.canye365.code.demo.domain.${Domain};
-import cn.canye365.code.demo.dto.${Domain}Dto;
-import cn.canye365.code.PageDto;
-import cn.canye365.code.ResponseDto;
-import cn.canye365.code.ValidatorException;
-import cn.canye365.code.demo.service.${Domain}Service;
-import cn.canye365.code.ValidatorUtil;
+import cn.canye365.demo.domain.${Domain};
+import cn.canye365.demo.dto.${Domain}Dto;
+import cn.canye365.demo.dto.PageDto;
+import cn.canye365.demo.dto.ResponseDto;
+import cn.canye365.demo.exception.ValidatorException;
+import cn.canye365.demo.service.${Domain}Service;
+import cn.canye365.demo.utils.ValidatorUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
