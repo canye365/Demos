@@ -7,6 +7,8 @@ import cn.canye365.demo.dto.ResponseDto;
 import cn.canye365.demo.exception.ValidatorException;
 import cn.canye365.demo.service.UserService;
 import cn.canye365.demo.utils.ValidatorUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,8 @@ import java.util.List;
 @RestController
 @RequestMapping("user")
 public class UserController {
+
+    private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
     /**
      * 日志系统利用反射获取业务名称
@@ -36,6 +40,7 @@ public class UserController {
      */
     @GetMapping("/list")
     public ResponseDto<PageDto> list(@RequestBody(required = false) PageDto<UserDto> pageDto){
+        LOG.info("list -- pageDto：{}", pageDto);
         ResponseDto<PageDto> responseDto = new ResponseDto<>();
         if(pageDto == null){
             pageDto = new PageDto<>();
@@ -54,6 +59,7 @@ public class UserController {
     */
     @GetMapping("/find/{id}")
     public ResponseDto<UserDto> list(@PathVariable long id){
+        LOG.info("listById -- id：{}", id);
         ResponseDto<UserDto> responseDto = new ResponseDto<>();
         UserDto userDto = userService.findById(id);
         responseDto.setContent(userDto);
@@ -65,14 +71,16 @@ public class UserController {
      */
     @PostMapping("/save")
     public ResponseDto<UserDto> save(@RequestBody UserDto userDto){
-
+        LOG.info("save -- userDto：{}", userDto);
         // 保存校验
+        /*
         ValidatorUtil.require(userDto.getUsername(), "用户名");
         ValidatorUtil.length(userDto.getUsername(), "用户名", 1, 20);
         ValidatorUtil.length(userDto.getPassword(), "密码", 1, 20);
         ValidatorUtil.require(userDto.getAge(), "年龄");
         ValidatorUtil.length(userDto.getEmail(), "邮箱", 1, 30);
         ValidatorUtil.require(userDto.getStatus(), "状态 0正常 1禁用");
+        */
 
         ResponseDto<UserDto> responseDto = new ResponseDto<>();
         userService.save(userDto);
@@ -85,6 +93,7 @@ public class UserController {
      */
     @DeleteMapping("/delete/{id}")
     public ResponseDto<UserDto> delete(@PathVariable long id){
+        LOG.info("delete -- id：{}", id);
         userService.delete(id);
         ResponseDto<UserDto> responseDto = new ResponseDto<>();
         return responseDto;

@@ -7,6 +7,8 @@ import cn.canye365.demo.dto.ResponseDto;
 import cn.canye365.demo.exception.ValidatorException;
 import cn.canye365.demo.service.${Domain}Service;
 import cn.canye365.demo.utils.ValidatorUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,8 @@ import java.util.List;
 @RestController
 @RequestMapping("${domain}")
 public class ${Domain}Controller {
+
+    private static final Logger LOG = LoggerFactory.getLogger(${Domain}Controller.class);
 
     /**
      * 日志系统利用反射获取业务名称
@@ -36,6 +40,7 @@ public class ${Domain}Controller {
      */
     @GetMapping("/list")
     public ResponseDto<PageDto> list(@RequestBody(required = false) PageDto<${Domain}Dto> pageDto){
+        LOG.info("list -- pageDto：{}", pageDto);
         ResponseDto<PageDto> responseDto = new ResponseDto<>();
         if(pageDto == null){
             pageDto = new PageDto<>();
@@ -54,6 +59,7 @@ public class ${Domain}Controller {
     */
     @GetMapping("/find/{id}")
     public ResponseDto<${Domain}Dto> list(@PathVariable long id){
+        LOG.info("listById -- id：{}", id);
         ResponseDto<${Domain}Dto> responseDto = new ResponseDto<>();
         ${Domain}Dto ${domain}Dto = ${domain}Service.findById(id);
         responseDto.setContent(${domain}Dto);
@@ -65,8 +71,9 @@ public class ${Domain}Controller {
      */
     @PostMapping("/save")
     public ResponseDto<${Domain}Dto> save(@RequestBody ${Domain}Dto ${domain}Dto){
-
+        LOG.info("save -- ${domain}Dto：{}", ${domain}Dto);
         // 保存校验
+        /*
         <#list fieldList as field>
         <#if field.name!="id" && field.nameHump!="createdAt" && field.nameHump!="updatedAt" && field.nameHump!="sort">
             <#if !field.nullAble>
@@ -77,6 +84,7 @@ public class ${Domain}Controller {
             </#if>
         </#if>
         </#list>
+        */
 
         ResponseDto<${Domain}Dto> responseDto = new ResponseDto<>();
         ${domain}Service.save(${domain}Dto);
@@ -89,6 +97,7 @@ public class ${Domain}Controller {
      */
     @DeleteMapping("/delete/{id}")
     public ResponseDto<${Domain}Dto> delete(@PathVariable long id){
+        LOG.info("delete -- id：{}", id);
         ${domain}Service.delete(id);
         ResponseDto<${Domain}Dto> responseDto = new ResponseDto<>();
         return responseDto;
