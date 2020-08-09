@@ -30,13 +30,18 @@ public class ${Domain}Controller {
     private ${Domain}Service ${domain}Service;
 
     /**
-     * 分页查询
-     * @param pageDto
+     * 分页查询为
+     * @param pageDto 分页参数，可以为空，为空时设置为第1页，每页10条记录
      * @return
      */
-    @PostMapping("/list")
-    public ResponseDto<PageDto> list(@RequestBody PageDto<${Domain}Dto> pageDto){
+    @GetMapping("/list")
+    public ResponseDto<PageDto> list(@RequestBody(required = false) PageDto<${Domain}Dto> pageDto){
         ResponseDto<PageDto> responseDto = new ResponseDto<>();
+        if(pageDto == null){
+            pageDto = new PageDto<>();
+            pageDto.setCurrentPage(1);
+            pageDto.setPageSize(10);
+        }
         ${domain}Service.list(pageDto);
         responseDto.setContent(pageDto);
         return responseDto;

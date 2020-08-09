@@ -34,8 +34,8 @@ public class ${Domain}ServiceImpl implements ${Domain}Service {
     private ${Domain}Mapper ${domain}Mapper;
 
     /**
-     * 列表查询
-     */
+    * 列表查询
+    */
     @Override
     public void list(PageDto<${Domain}Dto> pageDto) {
         PageHelper.startPage(pageDto.getCurrentPage(), pageDto.getPageSize());  //第一页就是第一页，没有0 => 相当于limit

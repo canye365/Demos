@@ -17,11 +17,11 @@ import java.util.*;
 public class VueGenerator {
 
     //读generatorConfig.xml
-    static String generatorConfigPath = "server/src/main/resources/generator/generatorConfig.xml";
+    static String generatorConfigPath = "demo/src/main/resources/generator/generatorConfig.xml";
 
 
     static String MODULE = "business";
-    static String toVuePath = "admin/src/views/admin/";
+    static String toVuePath = "vue-element-admin-master/src/views/table/";
 
     public static void main(String[] args) throws Exception {
 
@@ -64,7 +64,7 @@ public class VueGenerator {
         map.put("typeSet", typeSet);
 
         // vue
-        FreemarkerUtil.initConfig("vue.ftl");
+        FreemarkerUtil.initConfig("vue2.ftl");
         FreemarkerUtil.generator(toVuePath + domain + ".vue", map);
 
     }
