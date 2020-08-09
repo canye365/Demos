@@ -19,6 +19,8 @@ public class User {
 
     private String status;
 
+    private Date updatetime;
+
     public Long getId() {
         return id;
     }
@@ -83,6 +85,14 @@ public class User {
         this.status = status;
     }
 
+    public Date getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -97,6 +107,7 @@ public class User {
         sb.append(", email=").append(email);
         sb.append(", birthday=").append(birthday);
         sb.append(", status=").append(status);
+        sb.append(", updatetime=").append(updatetime);
         sb.append("]");
         return sb.toString();
     }

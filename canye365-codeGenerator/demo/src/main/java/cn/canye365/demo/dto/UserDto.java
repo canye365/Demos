@@ -49,6 +49,12 @@ public class UserDto {
      */
     private String status;
 
+    /**
+     * 更新时间
+     */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date updatetime;
+
     public Long getId() {
         return id;
     }
@@ -113,6 +119,14 @@ public class UserDto {
         this.status = status;
     }
 
+    public Date getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
+    }
+
 
     @Override
     public String toString() {
@@ -128,6 +142,7 @@ public class UserDto {
         sb.append(", email=").append(email);
         sb.append(", birthday=").append(birthday);
         sb.append(", status=").append(status);
+        sb.append(", updatetime=").append(updatetime);
         sb.append("]");
         return sb.toString();
     }

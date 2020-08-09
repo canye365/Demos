@@ -10,6 +10,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="birthday" jdbcType="DATE" property="birthday" />
     <result column="status" jdbcType="CHAR" property="status" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, `password`, age, sex, email, birthday, `status`
+    id, username, `password`, age, sex, email, birthday, `status`, updatetime
   </sql>
   <select id="selectByExample" parameterType="cn.canye365.demo.domain.UserExample" resultMap="BaseResultMap">
     select
@@ -105,10 +106,10 @@
   <insert id="insert" parameterType="cn.canye365.demo.domain.User">
     insert into user (id, username, `password`, 
       age, sex, email, birthday, 
-      `status`)
+      `status`, updatetime)
     values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{age,jdbcType=INTEGER}, #{sex,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
-      #{status,jdbcType=CHAR})
+      #{status,jdbcType=CHAR}, #{updatetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.canye365.demo.domain.User">
     insert into user
@@ -137,6 +138,9 @@
       <if test="status != null">
         `status`,
       </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -162,6 +166,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=CHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -198,6 +205,9 @@
       <if test="record.status != null">
         `status` = #{record.status,jdbcType=CHAR},
       </if>
+      <if test="record.updatetime != null">
+        updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -212,7 +222,8 @@
       sex = #{record.sex,jdbcType=CHAR},
       email = #{record.email,jdbcType=VARCHAR},
       birthday = #{record.birthday,jdbcType=DATE},
-      `status` = #{record.status,jdbcType=CHAR}
+      `status` = #{record.status,jdbcType=CHAR},
+      updatetime = #{record.updatetime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +252,9 @@
       <if test="status != null">
         `status` = #{status,jdbcType=CHAR},
       </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -252,7 +266,8 @@
       sex = #{sex,jdbcType=CHAR},
       email = #{email,jdbcType=VARCHAR},
       birthday = #{birthday,jdbcType=DATE},
-      `status` = #{status,jdbcType=CHAR}
+      `status` = #{status,jdbcType=CHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
