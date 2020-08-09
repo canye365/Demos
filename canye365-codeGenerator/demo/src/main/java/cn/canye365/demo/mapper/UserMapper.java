@@ -2,9 +2,8 @@ package cn.canye365.demo.mapper;
 
 import cn.canye365.demo.domain.User;
 import cn.canye365.demo.domain.UserExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
     long countByExample(UserExample example);

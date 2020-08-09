@@ -11,6 +11,8 @@ public class User {
 
     private Integer age;
 
+    private String sex;
+
     private String email;
 
     private Date birthday;
@@ -47,6 +49,14 @@ public class User {
         this.age = age;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -73,6 +83,7 @@ public class User {
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
         sb.append(", age=").append(age);
+        sb.append(", sex=").append(sex);
         sb.append(", email=").append(email);
         sb.append(", birthday=").append(birthday);
         sb.append("]");
