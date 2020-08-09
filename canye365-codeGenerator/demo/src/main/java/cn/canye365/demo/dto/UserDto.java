@@ -44,6 +44,11 @@ public class UserDto {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date birthday;
 
+    /**
+     * 状态 0正常 1禁用
+     */
+    private String status;
+
     public Long getId() {
         return id;
     }
@@ -100,6 +105,14 @@ public class UserDto {
         this.birthday = birthday;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 
     @Override
     public String toString() {
@@ -114,6 +127,7 @@ public class UserDto {
         sb.append(", sex=").append(sex);
         sb.append(", email=").append(email);
         sb.append(", birthday=").append(birthday);
+        sb.append(", status=").append(status);
         sb.append("]");
         return sb.toString();
     }

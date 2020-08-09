@@ -72,6 +72,7 @@ public class UserController {
         ValidatorUtil.length(userDto.getPassword(), "密码", 1, 20);
         ValidatorUtil.require(userDto.getAge(), "年龄");
         ValidatorUtil.length(userDto.getEmail(), "邮箱", 1, 30);
+        ValidatorUtil.require(userDto.getStatus(), "状态 0正常 1禁用");
 
         ResponseDto<UserDto> responseDto = new ResponseDto<>();
         userService.save(userDto);

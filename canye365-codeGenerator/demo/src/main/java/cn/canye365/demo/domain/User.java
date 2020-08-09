@@ -17,6 +17,8 @@ public class User {
 
     private Date birthday;
 
+    private String status;
+
     public Long getId() {
         return id;
     }
@@ -73,6 +75,14 @@ public class User {
         this.birthday = birthday;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -86,6 +96,7 @@ public class User {
         sb.append(", sex=").append(sex);
         sb.append(", email=").append(email);
         sb.append(", birthday=").append(birthday);
+        sb.append(", status=").append(status);
         sb.append("]");
         return sb.toString();
     }
