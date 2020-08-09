@@ -14,7 +14,7 @@ public class ResponseDto<T> {
     /**
      * 返回码
      */
-    private String code;
+    private int code = 20000;
 
     /**
      * 返回信息
@@ -26,11 +26,11 @@ public class ResponseDto<T> {
      */
     private T content;
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
