@@ -35,101 +35,112 @@
       style="width: 100%;"
       @sort-change="sortChange"
     >
-      <el-table-column label="ID" prop="id" sortable="custom" align="center" width="80" :class-name="getSortClass('id')">
+      <!--显示序号，而不是id-->
+      <el-table-column type="index" label="序号" align="center" width="50px" class="el-icon-info" >
+      </el-table-column>
+      <!--<el-table-column label="id" hidden prop="id" sortable="custom" align="center" width="60px" :class-name="getSortClass('id')">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
-      </el-table-column>
-      <el-table-column label="Date" width="150px" align="center">
+      </el-table-column>-->
+      <el-table-column label="用户名" align="center" min-width="100px">
         <template slot-scope="{row}">
-          <span>{{ row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span >{{ row.username }}</span>
+<!--          <el-tag>{{ row.type | sexFilter }}</el-tag>-->
         </template>
       </el-table-column>
-      <el-table-column label="Title" min-width="150px">
+      <el-table-column label="性别" align="center" min-width="40px">
         <template slot-scope="{row}">
-          <span class="link-type" @click="handleUpdate(row)">{{ row.title }}</span>
-          <el-tag>{{ row.type | typeFilter }}</el-tag>
+          <span >{{ row.sex | transforSex }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="Author" width="110px" align="center">
+      <el-table-column label="年龄" align="center" min-width="40px">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span  >{{ row.age }}</span>
         </template>
       </el-table-column>
-      <el-table-column v-if="showReviewer" label="Reviewer" width="110px" align="center">
+      <el-table-column label="邮箱" align="center" min-width="150px">
         <template slot-scope="{row}">
-          <span style="color:red;">{{ row.reviewer }}</span>
+          <span >{{ row.email }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="Imp" width="80px">
+      <el-table-column label="生日" align="center" min-width="70px">
         <template slot-scope="{row}">
-          <svg-icon v-for="n in + row.importance" :key="n" icon-class="star" class="meta-item__icon" />
+          <span>{{ row.birthday | parseTime('{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="Readings" align="center" width="95">
-        <template slot-scope="{row}">
-          <span v-if="row.pageviews" class="link-type" @click="handleFetchPv(row.pageviews)">{{ row.pageviews }}</span>
-          <span v-else>0</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="Status" class-name="status-col" width="100">
+      <el-table-column label="状态" align="center" class-name="status-col" width="80px">
         <template slot-scope="{row}">
           <el-tag :type="row.status | statusFilter">
-            {{ row.status }}
+            {{ row.status | transforStatus }}
           </el-tag>
         </template>
       </el-table-column>
+      <el-table-column label="更新时间" align="center" min-width="100px">
+        <template slot-scope="{row}">
+          <span>{{ row.updatetime | parseTime('{y}-{m}-{d} {h}:{i}:{s}') }}</span>
+        </template>
+      </el-table-column>
+      <!--操作-->
       <el-table-column label="Actions" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="{row,$index}">
-          <el-button type="primary" size="mini" @click="handleUpdate(row)">
-            Edit
+          <el-button type="primary" size="mini" @click="handleUpdate(row, $index)">
+            编辑
           </el-button>
-          <el-button v-if="row.status!='published'" size="mini" type="success" @click="handleModifyStatus(row,'published')">
-            Publish
+          <el-button v-if="row.status !='0'" size="mini" @click="handleModifyStatus(row, 0)">
+            启用
           </el-button>
-          <el-button v-if="row.status!='draft'" size="mini" @click="handleModifyStatus(row,'draft')">
-            Draft
+          <el-button v-if="row.status !='1'" size="mini" @click="handleModifyStatus(row, 1)">
+            禁用
           </el-button>
           <el-button v-if="row.status!='deleted'" size="mini" type="danger" @click="handleDelete(row,$index)">
-            Delete
+            删除
           </el-button>
         </template>
       </el-table-column>
+
     </el-table>
 
     <pagination v-show="total>0" :total="total" :page.sync="listQuery.currentPage" :limit.sync="listQuery.pageSize" @pagination="getList" />
 
+    <!--弹出框-->
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
-        <el-form-item label="Type" prop="type">
-          <el-select v-model="temp.type" class="filter-item" placeholder="Please select">
-            <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name" :value="item.key" />
+
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model="temp.username" />
+        </el-form-item>
+        <el-form-item label="性别" prop="sex">
+          <el-select v-model="temp.sex" ><!--class="filter-item"-->
+            <el-option v-for="item in sexOptions" :key="item" :label="item | transforSex" :value="item" />
           </el-select>
         </el-form-item>
-        <el-form-item label="Date" prop="timestamp">
-          <el-date-picker v-model="temp.timestamp" type="datetime" placeholder="Please pick a date" />
+        <el-form-item label="年龄" prop="age">
+          <el-input-number v-model="temp.age" />
         </el-form-item>
-        <el-form-item label="Title" prop="title">
-          <el-input v-model="temp.title" />
+
+
+        <el-form-item label="email">
+          <el-input v-model="temp.email" />
         </el-form-item>
+
+        <el-form-item label="生日" prop="birthday">
+          <el-date-picker v-model="temp.birthday" type="date" placeholder="日期" />
+        </el-form-item>
+
         <el-form-item label="Status">
-          <el-select v-model="temp.status" class="filter-item" placeholder="Please select">
-            <el-option v-for="item in statusOptions" :key="item" :label="item" :value="item" />
+          <el-select v-model="temp.status"  placeholder="Please select">
+            <el-option v-for="item in statusOptions" :key="item" :label="item | transforStatus" :value="item" />
           </el-select>
         </el-form-item>
-        <el-form-item label="Imp">
-          <el-rate v-model="temp.importance" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" :max="3" style="margin-top:8px;" />
-        </el-form-item>
-        <el-form-item label="Remark">
-          <el-input v-model="temp.remark" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="Please input" />
-        </el-form-item>
+
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">
-          Cancel
+          取消
         </el-button>
         <el-button type="primary" @click="dialogStatus==='create'?createData():updateData()">
-          Confirm
+          确认
         </el-button>
       </div>
     </el-dialog>
@@ -147,7 +158,7 @@
 </template>
 
 <script>
-import { fetchList2, fetchPv, createArticle, updateArticle } from '@/api/article'
+import { fetchList2, fetchPv, createArticle2, updateArticle2 } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination'
@@ -172,14 +183,16 @@ export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger'
+        0: 'success',
+        1: 'danger'
       }
       return statusMap[status]
     },
-    typeFilter(type) {
-      return calendarTypeKeyValue[type]
+    transforSex(sex){
+      return sex === "f" ? "女" : "男";
+    },
+    transforStatus(status){
+      return status == "0" ? "正常" : "禁用";
     }
   },
   data() {
@@ -195,17 +208,10 @@ export default {
       importanceOptions: [1, 2, 3],
       calendarTypeOptions,
       sortOptions: [{ label: 'ID Ascending', key: '+id' }, { label: 'ID Descending', key: '-id' }],
-      statusOptions: ['published', 'draft', 'deleted'],
+      statusOptions: ['0', '1'],
+      sexOptions: ['f', 'm'],
       showReviewer: false,
-      temp: {
-        id: undefined,
-        importance: 1,
-        remark: '',
-        timestamp: new Date(),
-        title: '',
-        type: '',
-        status: 'published'
-      },
+      temp: {},
       dialogFormVisible: false,
       dialogStatus: '',
       textMap: {
@@ -228,11 +234,9 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      console.log("query: ", this.listQuery);
       fetchList2(this.listQuery).then(response => {
         this.list = response.content.list
         this.total = response.content.total
-
         // Just to simulate the time of the request
         setTimeout(() => {
           this.listLoading = false
@@ -265,15 +269,7 @@ export default {
       this.handleFilter()
     },
     resetTemp() {
-      this.temp = {
-        id: undefined,
-        importance: 1,
-        remark: '',
-        timestamp: new Date(),
-        title: '',
-        status: 'published',
-        type: ''
-      }
+      this.temp = {}
     },
     handleCreate() {
       this.resetTemp()
@@ -286,9 +282,9 @@ export default {
     createData() {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
-          this.temp.id = parseInt(Math.random() * 100) + 1024 // mock a id
-          this.temp.author = 'vue-element-admin'
-          createArticle(this.temp).then(() => {
+          this.temp.id = null // mock a id
+          this.temp.updatetime = + new Date()
+          createArticle2(this.temp).then(() => {
             this.list.unshift(this.temp)
             this.dialogFormVisible = false
             this.$notify({
@@ -301,9 +297,10 @@ export default {
         }
       })
     },
-    handleUpdate(row) {
+    handleUpdate(row, index) {
       this.temp = Object.assign({}, row) // copy obj
       this.temp.timestamp = new Date(this.temp.timestamp)
+      this.temp.index = index;
       this.dialogStatus = 'update'
       this.dialogFormVisible = true
       this.$nextTick(() => {
@@ -314,9 +311,14 @@ export default {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
           const tempData = Object.assign({}, this.temp)
-          tempData.timestamp = +new Date(tempData.timestamp) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
-          updateArticle(tempData).then(() => {
-            const index = this.list.findIndex(v => v.id === this.temp.id)
+          tempData.updatetime = + new Date() // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
+          updateArticle2(tempData).then(() => {
+            // 这个地方是比对id找到index的，因为id是不可变的
+            const index = this.list.findIndex(v => v.id === this.temp.id);
+            console.log("index ----> " , index);
+            // 把更新后的那条记录重新set进list就行了，
+            // 但是，直接在数组中set进元素前端感应不到，就不会渲染
+            // 因此这里的解决办法是从数组冲把这个元素取出来，然后再存进去。
             this.list.splice(index, 1, this.temp)
             this.dialogFormVisible = false
             this.$notify({

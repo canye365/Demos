@@ -40,9 +40,25 @@ export function createArticle(data) {
   })
 }
 
+export function createArticle2(data) {
+  return request({
+    url: 'http://127.0.0.1:8080/user/save',
+    method: 'post',
+    data
+  })
+}
+
 export function updateArticle(data) {
   return request({
     url: '/vue-element-admin/article/update',
+    method: 'post',
+    data
+  })
+}
+
+export function updateArticle2(data) {
+  return request({
+    url: 'http://127.0.0.1:8080/user/save',
     method: 'post',
     data
   })
