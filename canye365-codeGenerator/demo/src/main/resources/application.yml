@@ -8,6 +8,8 @@ spring:
     url: jdbc:mysql://192.168.43.120:3306/test?characterEncoding=UTF8&autoReconnetion=true&useSSL=false
     username: root
     password: root
+  jackson:
+    time-zone: GMT+8
 
 # 扫描 mapper
 mybatis:
