@@ -119,13 +119,12 @@
           <el-input-number v-model="temp.age" />
         </el-form-item>
 
-
         <el-form-item label="email">
           <el-input v-model="temp.email" />
         </el-form-item>
 
         <el-form-item label="生日" prop="birthday">
-          <el-date-picker v-model="temp.birthday" type="date" placeholder="日期" />
+          <el-date-picker value-format="yyyy-MM-dd"  v-model="temp.birthday" type="date" placeholder="日期" />
         </el-form-item>
 
         <el-form-item label="Status">
@@ -311,6 +310,7 @@ export default {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
           const tempData = Object.assign({}, this.temp)
+          console.log("birthday --->" , tempData.birthday)
           tempData.updatetime = + new Date() // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
           updateArticle2(tempData).then(() => {
             // 这个地方是比对id找到index的，因为id是不可变的
